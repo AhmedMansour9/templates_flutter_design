@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:webview_flutter/data/datasource/remote/dio/logging_interceptor.dart';
+import 'package:webview_flutter/data/datasource/remote/dio_connection//interceptor.dart';
 import 'package:webview_flutter/utill/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,7 +18,6 @@ class DioClient {
   DioClient(this.baseUrl, Dio dioC, { this.loggingInterceptor, this.sharedPreferences,}) {
     language =sharedPreferences?.getString(AppConstants.LANGUAGE_CODE);
 
-    print(token);
     dio = dioC;
     dio
       ..options.baseUrl = baseUrl

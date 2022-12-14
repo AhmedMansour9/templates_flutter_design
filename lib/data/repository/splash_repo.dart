@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/data/datasource/remote/dio/dio_client.dart';
+import 'package:webview_flutter/data/datasource/remote/dio_connection/dio_base.dart';
 import 'package:webview_flutter/data/datasource/remote/exception/api_error_handler.dart';
-import 'package:webview_flutter/data/model/response/base/api_response.dart';
+import 'package:webview_flutter/data/model/api_response.dart';
 import 'package:webview_flutter/utill/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

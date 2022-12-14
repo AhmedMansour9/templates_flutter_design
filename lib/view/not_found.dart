@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/helper/responsive_helper.dart';
 
 class EmptyPage extends StatelessWidget {
   @override

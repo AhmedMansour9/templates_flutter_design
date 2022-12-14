@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:webview_flutter/data/model/response/base/error_response.dart';
+import 'package:webview_flutter/data/model/error_response.dart';
 
 class ApiErrorHandler {
   static dynamic getMessage(error) {

@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/helper/responsive_helper.dart';
-import 'package:webview_flutter/helper/version-check.dart';
 import 'package:webview_flutter/localization/language_constrants.dart';
 import 'package:webview_flutter/provider/localization_provider.dart';
 import 'package:webview_flutter/provider/splash_provider.dart';
@@ -16,7 +14,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../base/custom_snackbar.dart';
 
-// import '../../base/custom_snackbar.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

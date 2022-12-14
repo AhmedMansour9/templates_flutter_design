@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/data/model/response/base/api_response.dart';
-import 'package:webview_flutter/data/model/response/config_model.dart';
+import 'package:webview_flutter/data/model/api_response.dart';
+import 'package:webview_flutter/data/model/config_model.dart';
 import 'package:webview_flutter/data/repository/splash_repo.dart';
 import 'package:webview_flutter/utill/app_constants.dart';
 import 'package:intl/intl.dart';

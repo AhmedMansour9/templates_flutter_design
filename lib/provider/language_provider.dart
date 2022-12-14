@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/data/model/response/language_model.dart';
+import 'package:webview_flutter/data/model/language_model.dart';
 import 'package:webview_flutter/data/repository/language_repo.dart';
 
 class LanguageProvider with ChangeNotifier {
