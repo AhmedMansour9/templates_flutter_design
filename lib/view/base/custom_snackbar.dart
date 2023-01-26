@@ -14,12 +14,6 @@ Future<void> showCustomSnackBar(String message, BuildContext context, {bool isEr
 
 }
 
-// Future<AudioPlayer> showSong() async {
-//    AudioCache player = new AudioCache();
-//
-//    return await player.play(AppConstants.CART_MP3);
-//
-// }
 
 extension TextEditingControllerExt on TextEditingController {
   void selectAll() {

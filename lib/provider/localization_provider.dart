@@ -9,7 +9,7 @@ class LocalizationProvider extends ChangeNotifier {
     _loadCurrentLanguage();
   }
 
-  Locale _locale = Locale('ar', 'SA');
+  Locale _locale = Locale('en', 'SR');
   bool _isLtr = true;
   Locale get locale => _locale;
   bool get isLtr => _isLtr;
@@ -26,9 +26,9 @@ class LocalizationProvider extends ChangeNotifier {
   }
 
   _loadCurrentLanguage() async {
-    _locale = Locale(sharedPreferences.getString(AppConstants.LANGUAGE_CODE) ?? 'ar',
-        sharedPreferences.getString(AppConstants.COUNTRY_CODE) ?? 'SA');
-    _isLtr = _locale.languageCode == 'ar';
+    _locale = Locale(sharedPreferences.getString(AppConstants.LANGUAGE_CODE) ?? 'en',
+        sharedPreferences.getString(AppConstants.COUNTRY_CODE) ?? 'US');
+    _isLtr = _locale.languageCode == 'en';
     notifyListeners();
   }
 

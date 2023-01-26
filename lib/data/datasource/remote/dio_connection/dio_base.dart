@@ -1,23 +1,26 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:webview_flutter/data/datasource/remote/dio_connection//interceptor.dart';
-import 'package:webview_flutter/utill/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../../utill/app_constants.dart';
+import 'interceptor.dart';
 
 class DioClient {
   final String baseUrl;
   final LoggingInterceptor? loggingInterceptor;
   final SharedPreferences? sharedPreferences;
 
- late Dio dio;
+  late Dio dio;
   String? token;
   String? language;
 
 
   DioClient(this.baseUrl, Dio dioC, { this.loggingInterceptor, this.sharedPreferences,}) {
+    token = sharedPreferences?.getString(AppConstants.TOKEN);
     language =sharedPreferences?.getString(AppConstants.LANGUAGE_CODE);
 
+    print(token);
     dio = dioC;
     dio
       ..options.baseUrl = baseUrl
@@ -26,6 +29,7 @@ class DioClient {
       ..httpClientAdapter
       ..options.headers = {
         'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer $token',
         'Language': language ?? "ar"
       };
     dio.interceptors.add(loggingInterceptor!);
@@ -107,4 +111,25 @@ class DioClient {
     }
   }
 
+  Future<Response> delete(String uri, {
+    data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+  }) async {
+    try {
+      var response = await dio.delete(
+        uri,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+      );
+      return response;
+    } on FormatException catch (_) {
+      throw FormatException("Unable to process the data");
+    } catch (e) {
+      throw e;
+    }
+  }
 }

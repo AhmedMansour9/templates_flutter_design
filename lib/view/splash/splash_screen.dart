@@ -1,19 +1,11 @@
 import 'dart:async';
-import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/localization/language_constrants.dart';
-import 'package:webview_flutter/provider/localization_provider.dart';
-import 'package:webview_flutter/provider/splash_provider.dart';
-import 'package:webview_flutter/utill/app_constants.dart';
-import 'package:webview_flutter/utill/color_resources.dart';
+import 'package:webview_flutter/view/splash/splash_provider.dart';
 import 'package:webview_flutter/utill/images.dart';
-import 'package:webview_flutter/utill/routes.dart';
-import 'package:webview_flutter/utill/styles.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:webview_flutter/view/home/home_screen.dart';
 
-import '../base/custom_snackbar.dart';
-
+import '../../provider/localization_provider.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -21,77 +13,37 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  GlobalKey<ScaffoldMessengerState> _globalKey = GlobalKey();
-  late StreamSubscription<ConnectivityResult> _onConnectivityChanged;
-  late SharedPreferences sharedPreferences;
 
   @override
   void initState() {
     super.initState();
-
-    bool _firstTime = true;
-    _onConnectivityChanged = Connectivity()
-        .onConnectivityChanged
-        .listen((ConnectivityResult result) {
-      if (!_firstTime) {
-        bool isNotConnected = result != ConnectivityResult.wifi &&
-            result != ConnectivityResult.mobile;
-        isNotConnected
-            ? SizedBox()
-            : _globalKey.currentState?.hideCurrentSnackBar();
-        showCustomSnackBar( isNotConnected ? getTranslated('no_connection', context) :
-        getTranslated('connected',context), context);
-        if (!isNotConnected) {
-          _route();
-        }
-      }
-      _firstTime = false;
-    });
-
-    Provider.of<SplashProvider>(context, listen: false).initSharedData();
-
     _route();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-
-    _onConnectivityChanged.cancel();
-  }
-
   void _route() {
-
-            Timer(Duration(seconds: 3), () async {
-              // Navigator.pushNamedAndRemoveUntil(
-              //     context,
-              //     Routes.getLanguageRoute("1"),
-              //         (route) => false);
-
-
-            }
-            );
-
-
+    Timer(const Duration(seconds: 3), () async {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (BuildContext context) => const HomeScreen()));
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      backgroundColor: ColorResources.COLOR_DARKPRIMARY,
+      backgroundColor: Colors.white,
       body: ScaffoldMessenger(
-        key: _globalKey,
         child: Center(
           child: Consumer<SplashProvider>(builder: (context, splash, child) {
             return Padding(
               padding: EdgeInsets.all(5),
               child: Center(
-                child: Image.asset(Images.logo,fit: BoxFit.cover,),
+                child: Image.asset(
+                  Images.logo,
+                  fit: BoxFit.cover,
+                ),
               ),
             );
-          }
-          ),
+          }),
         ),
       ),
     );

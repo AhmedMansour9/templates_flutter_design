@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/utill/color_resources.dart';
 import 'package:webview_flutter/utill/dimensions.dart';
 
 ThemeData light = ThemeData(
   fontFamily: 'Medium',
   primaryColor: const Color(0xFF491249),//#491249
-
+  primarySwatch: Colors.cyan,
+   backgroundColor: ColorResources.colorPrimary,
   brightness: Brightness.light,
   accentColor: Colors.white,
   focusColor: const Color(0xFFADC4C8),
   hintColor: const Color(0xFF52575C),
-
 
   textTheme: const TextTheme(
 

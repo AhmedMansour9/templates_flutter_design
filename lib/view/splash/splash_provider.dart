@@ -52,24 +52,6 @@ class SplashProvider extends ChangeNotifier {
     return splashRepo.initSharedData();
   }
 
-  Future<bool> removeSharedData() {
-    return splashRepo.removeSharedData();
-  }
 
 
-  Future<void> saveFirstVisit() async {
-    try {
-      await sharedPreferences.setBool(AppConstants.FIRST_TIME, true);
-    } catch (e) {
-      throw e;
-    }
-  }
-
-
-
-  bool isFirstVisit() {
-    return sharedPreferences.containsKey(AppConstants.FIRST_TIME)
-        ? true
-        : false;
-  }
 }

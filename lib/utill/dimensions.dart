@@ -14,4 +14,7 @@ class Dimensions {
   static const double PADDING_SIZE_EXTRA_LARGE = 25.0;
 
 
+  static const double SIZE_ICONS = 20.0;
+
+
 }
